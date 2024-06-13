@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int bin_search(int n, int arr[], int x){
+  int low, high, mid;
+  int location = 0;
+  low = 0;
+  high = n-1;
+  int cnt = 0;
+  
+  while(low <= high && location == 0){
+    mid = (low+high)/2;
+    cnt++;
+    if(x == arr[mid]){
+      location = mid;
+      printf("\n\n입력 값 %d의 위치 : %d번째\n", x, location+1);
+      printf("(기본연산 %d회 수행)",cnt);
+      return 0;
+    }
+    else if(x < arr[mid]){
+      high = mid-1;
+    }
+    else if(x > arr[mid]){
+      low = mid+1;
+    }
+  }
+  printf("\n\n찾는 값 없음\n");
+  printf("(기본연산 %d회 수행)", cnt);
+  return 0;
+}
+
+int main(void) {
+  int n=14;
+  int arr[14] = {2,3,4,5,6,7,8,9,10,11,12,13, 14, 15};
+
+  int x;
+  printf("검색할 수 입력 : ");
+  scanf("%d",&x);
+
+  bin_search(n, arr, x);
+  return 0;
+}
