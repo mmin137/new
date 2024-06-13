@@ -1,0 +1,53 @@
+#include <stdio.h>
+int A[2][3]={{1, 2, 3}, {4, 5, 6}};
+int B[3][2]={{2, 3}, {4, 5}, {6, 7}}; 
+
+int insert(int n, int A[][3], int B[][3]){
+  printf("A 배열 입력");
+  printf("\n");
+  for(int i=0; i<2; i++){
+    for(int j=0; j<3; j++){
+      scanf("%d", &A[i][j]);
+    }
+  }
+  printf("B 배열 입력");
+  printf("\n");
+  for(int i=0; i<3; i++){
+    for(int j=0; j<2; j++){
+      scanf("%d", &B[i][j]);
+    }
+  }
+}
+
+int matrix_mult(int n, int A[][3], int B[][2], int C[][3]){
+  int i, j, k;
+  for(i=0; i<2; i++){
+    for(j=0; j<2; j++){
+      C[i][j]=0;
+      for(k=0; k<3; k++){
+        C[i][j]=C[i][j] + A[i][k] * B[k][j];
+      }
+      printf("%d ", C[i][j]);
+    }
+    printf("\n");
+  }
+}
+
+int main(void) {
+  int n=3;
+  int s=0;
+  printf("행렬 A, B 값 삽입하기(Y=1, N=0)");
+  scanf("%d", &s);
+  if(s==1){
+    insert(n, A, B);
+  } else printf("기존 설정 값 출력\n");
+  int C[3][3];
+  matrix_mult(n, A, B, C);
+
+
+  return 0;
+}
+
+
+
+
